@@ -5,7 +5,7 @@
       type="text"
       name="url"
       placeholder="Copy youtube link here"
-      class="w-1/3 text-green-600 font-extralight border-2 border-green-400 rounded-lg h-10 px-4 focus:outline-green-400 placeholder-green-500"
+      class="w-1/3 text-green-600 font-extralight border-2 border-green-400 rounded-lg h-10 px-4 focus:outline-green-400 placeholder-green-500 placeholder:font-extralight"
       :class="isMobile && 'w-full'"
       autofocus
       autocomplete="off"
@@ -39,7 +39,8 @@ const handleEnter = () => {
     val.value.includes("https://www.youtube.com/watch?v=") ||
     val.value == ""
   ) {
-    router.push("about");
+    const id = val.value.replace("https://www.youtube.com/watch?v=", '').slice(0,11)
+    router.push(`download/${id}`)
   }
 };
 </script>

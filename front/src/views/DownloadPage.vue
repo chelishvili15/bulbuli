@@ -1,11 +1,12 @@
 <template>
-  <div class="flex flex-col justify-center items-center p-10 gap-10 bg-red-50">
+  <div class="flex flex-col justify-center items-center p-10 gap-10">
     <div
-      class="border-4 px-20 py-12 rounded"
+      class="border-2 px-20 py-12 rounded"
+      :class="loader || error ? 'border-green-300': 'border-green-500'"
     >
       <button
-        class=" px-8 py-3 rounded-xl text-gray-100"
-        :class="loader || error ? 'bg-blue-300': 'bg-blue-500 cursor-pointer hover:bg-blue-700 hover:text-white' "
+        class=" px-8 py-3 rounded-xl text-gray-100 font-makasar"
+        :class="loader || error ? 'bg-green-300': 'bg-green-500 cursor-pointer hover:bg-green-700 hover:text-white' "
         :disabled="loader || error"
         @click="buttonClicked"
       >
@@ -38,34 +39,34 @@ const id = ref('XGcX5wopq3M')
 const loader = ref(true) 
 const error = ref(false)
 
-// onMounted(async() => {
-//   const route = useRoute();
-//   id.value = route.params.path[0]
-//   loader.value = true
+onMounted(async() => {
+  const route = useRoute();
+  id.value = route.params.path[0]
+  loader.value = true
 
-//   const options = {
-//     method: "GET",
-//     url: "https://youtube-mp36.p.rapidapi.com/dl",
-//     params: { id: id.value },
-//     headers: {
-//       "X-RapidAPI-Key": "69f56c9d5dmsh47a93b89b474344p121e24jsnec66aa328a1e",
-//       "X-RapidAPI-Host": "youtube-mp36.p.rapidapi.com",
-//     },
-//   }
+  const options = {
+    method: "GET",
+    url: "https://youtube-mp36.p.rapidapi.com/dl",
+    params: { id: id.value },
+    headers: {
+      "X-RapidAPI-Key": "69f56c9d5dmsh47a93b89b474344p121e24jsnec66aa328a1e",
+      "X-RapidAPI-Host": "youtube-mp36.p.rapidapi.com",
+    },
+  }
 
-//   const response = await axios.request(options);
+  const response = await axios.request(options);
 
-//   console.log(response.data.status)
+  console.log(response.data.status)
 
-//   if (response.data.status != 'fail') {
-//     title.value = response.data.title
-//     loader.value = false
-//     link.value = response.data.link
-//   } else {
-//     error.value = true
-//     loader.value = false
-//   }
-// })
+  if (response.data.status != 'fail') {
+    title.value = response.data.title
+    loader.value = false
+    link.value = response.data.link
+  } else {
+    error.value = true
+    loader.value = false
+  }
+})
 
 const buttonClicked = () => {
   src.value = link.value

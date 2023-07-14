@@ -1,11 +1,10 @@
 <template>
-  <div class="w-full">
-      <Input></Input>
+  <div class="absolute bottom-10 cursor-pointer">
+    &#169; Davit Chelishvili
   </div>
 </template>
 
 <script setup>
-import Input from '@/components/Home/Input.vue';
 
 </script>
 

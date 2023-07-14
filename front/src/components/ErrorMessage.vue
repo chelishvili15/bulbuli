@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-red-300 text-white text-xl border-l-8 border-red-600 py-10 w-84 px-10 rounded-r-lg">
-    Youtube link or video Id is incorrect
+  <div class="bg-red-50 px-10 py-10 border-l-4 border-red-200 m-10 rounded-r-xl">
+    <span class="text-red-400">Youtube link or video Id is incorrect</span>
   </div>
 </template>
 
